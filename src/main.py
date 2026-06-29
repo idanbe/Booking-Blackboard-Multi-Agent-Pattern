@@ -1,3 +1,6 @@
+import state
+
+
 def main():
     print("Hello from booking-lab!")
 

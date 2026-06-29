@@ -1,7 +1,19 @@
 [project]
 name = "booking-lab"
 version = "0.1.0"
-description = "Add your description here"
+description = "Booking multi-agent lab demonstrating the Blackboard architecture pattern"
 readme = "README.md"
+authors = [
+    { name = "Idan Beck", email = "idanbeck88@gmail.com" }
+]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "gradio>=6.19.0",
+    "langgraph>=1.2.6",
+]
+[tool.uv]
+package = true
+
+
+[project.scripts]
+app = "main:main"
