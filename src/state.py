@@ -11,6 +11,10 @@ them.
 import operator
 from typing import Annotated, Optional, TypedDict
 
+"""
+BookingState is the blackboard. It contains the state of the booking process.
+"""
+
 
 class BookingState(TypedDict):
     # raw input
@@ -48,26 +52,41 @@ class BookingState(TypedDict):
 
 
 # Shared Parameters -- read-only control values shared by all agents + policy.
-class SharedParameters(TypedDict):
-    confidence_threshold: 0.75
-    risk_threshold: 0.6
-    max_iterations: 3
-    approval_required_for_payment: True
-    free_cancellation_required: True
-    currency: "EUR"
+shared_parameters: dict = {
+    "confidence_threshold": 0.75,
+    "risk_threshold": 0.6,
+    "max_iterations": 3,
+    "approval_required_for_payment": True,
+    "free_cancellation_required": True,
+    "currency": "EUR"
+}
 
 
 def initial_state(user_request: str) -> BookingState:
     """Build a fresh blackboard."""
 
-    initial_state: BookingState = {
+    initial_booking_state: BookingState = {
         "user_request": user_request,
         "destination": None,
         "check_in": None,
         "check_out": None,
         "adults": None,
         "budget_per_night": None,
-        "preferences": None,
+        "preferences": [],
+        "booking_status": "new_request",
+        "candidate_hotels": [],
+        "documents_status": "pending",
+        "missing_fields": [],
+        "technical_issues": [],
+        "support_response": None,
+        "risk_score": 0.0,
+        "confidence_score": 0.0,
+        "requires_human_approval": False,
+        "audit_log": [],
+        "iterations": 0,
+        "full_name": None,
+        "email": None,
+        "phone_number": None,
     }
 
-    return initial_state
+    return initial_booking_state
