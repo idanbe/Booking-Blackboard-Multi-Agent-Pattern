@@ -12,12 +12,18 @@ function. This file imports each of them and wires them into the
 consumed by the graph.
 """
 from agents import parse_user_request
+from agents import booking
 
 KNOWLEDGE_SOURCES = [
     {
         "name": "parse_user_request",
         "precondition": parse_user_request.precondition,
         "agent": parse_user_request.agent,
+    },
+    {
+        "name": "booking",
+        "precondition": booking.precondition,
+        "agent": booking.agent,
     },
 ]
 
