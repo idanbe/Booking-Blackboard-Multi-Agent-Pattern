@@ -25,6 +25,7 @@ class BookingState(TypedDict):
     check_in: Optional[str]
     check_out: Optional[str]
     adults: Optional[int]
+    children: Optional[int]
     budget_per_night: Optional[int]
     preferences: list[str]
 
@@ -71,11 +72,12 @@ def initial_state(user_request: str) -> BookingState:
         "check_in": None,
         "check_out": None,
         "adults": None,
+        "children": None,
         "budget_per_night": None,
         "preferences": [],
         "booking_status": "new_request",
         "candidate_hotels": [],
-        "documents_status": "pending",
+        "documents_status": "not_checked",
         "missing_fields": [],
         "technical_issues": [],
         "support_response": None,
@@ -84,9 +86,9 @@ def initial_state(user_request: str) -> BookingState:
         "requires_human_approval": False,
         "audit_log": [],
         "iterations": 0,
-        "full_name": None,
-        "email": None,
-        "phone_number": None,
+        "full_name": "idan",
+        "email": "idan@example.com",
+        "phone_number": "1234567890",
     }
 
     return initial_booking_state

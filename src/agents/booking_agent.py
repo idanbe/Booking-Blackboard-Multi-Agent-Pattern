@@ -15,7 +15,7 @@ def precondition(state: BookingState) -> bool:
     return state["booking_status"] == "request_parsed" and state["destination"] is not None
 
 
-def agent(state: BookingState, config: RunnableConfig) -> BookingState:
+def run(state: BookingState, config: RunnableConfig) -> BookingState:
     """filter hotels based on the parsed fields and shared_parameters"""
     shared_parameters = config["configurable"]["params"]
 

@@ -11,19 +11,37 @@ function. This file imports each of them and wires them into the
 `KNOWLEDGE_SOURCE` dicts that make up the single `KNOWLEDGE_SOURCES` list
 consumed by the graph.
 """
-from agents import parse_user_request
-from agents import booking
+from agents import parse_request_agent
+from agents import booking_agent
+from agents import document_verification_agent
+from agents import code_review_agent
+from agents import risk_agent
 
 KNOWLEDGE_SOURCES = [
     {
         "name": "parse_user_request",
-        "precondition": parse_user_request.precondition,
-        "agent": parse_user_request.agent,
+        "precondition": parse_request_agent.precondition,
+        "agent": parse_request_agent.run,
     },
     {
         "name": "booking",
-        "precondition": booking.precondition,
-        "agent": booking.agent,
+        "precondition": booking_agent.precondition,
+        "agent": booking_agent.run,
+    },
+    {
+        "name": "document_verification",
+        "precondition": document_verification_agent.precondition,
+        "agent": document_verification_agent.run,
+    },
+    {
+        "name": "code_review",
+        "precondition": code_review_agent.precondition,
+        "agent": code_review_agent.run,
+    },
+    {
+        "name": "risk",
+        "precondition": risk_agent.precondition,
+        "agent": risk_agent.run,
     },
 ]
 

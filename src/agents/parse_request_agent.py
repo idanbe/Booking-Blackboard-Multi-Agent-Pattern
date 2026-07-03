@@ -10,13 +10,13 @@ def precondition(state: BookingState) -> bool:
     return state["booking_status"] == "new_request"
 
 
-def agent(state: BookingState) -> BookingState:
+def run(state: BookingState) -> BookingState:
     """Parse the user request and return a partial update containing the parsed fields."""
 
     mock_user_request_parsed_fields = {
         "destination": "Jerusalem",
-        "check_in": "2026-07-05",
-        "check_out": "2026-07-02",
+        "check_in": "2026-07-02",
+        "check_out": "2026-07-05",
         "adults": 2,
         "budget_per_night": 100,
         "preferences": ["breakfast", "wifi"],
