@@ -19,27 +19,27 @@ from agents import risk_agent
 
 KNOWLEDGE_SOURCES = [
     {
-        "name": "parse_user_request",
+        "name": "parse_request_agent",
         "precondition": parse_request_agent.precondition,
         "agent": parse_request_agent.run,
     },
     {
-        "name": "booking",
+        "name": "booking_agent",
         "precondition": booking_agent.precondition,
         "agent": booking_agent.run,
     },
     {
-        "name": "document_verification",
+        "name": "document_verification_agent",
         "precondition": document_verification_agent.precondition,
         "agent": document_verification_agent.run,
     },
     {
-        "name": "code_review",
+        "name": "code_review_agent",
         "precondition": code_review_agent.precondition,
         "agent": code_review_agent.run,
     },
     {
-        "name": "risk",
+        "name": "risk_agent",
         "precondition": risk_agent.precondition,
         "agent": risk_agent.run,
     },

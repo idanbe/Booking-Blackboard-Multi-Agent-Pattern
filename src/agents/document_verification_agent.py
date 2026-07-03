@@ -21,24 +21,34 @@ def run(state: BookingState) -> BookingState:
         field for field in required_fields if state.get(field) is None]
 
     if missing_fields:
-        return {
+        new_state = {
             **state,
             "missing_fields": missing_fields,
             "documents_status": "missing_fields",
             "booking_status": "documents_incomplete",
+        }
+        return {
+            **new_state,
             "audit_log": [
                 audit_entry("agent_document_verification",
-                            "documents_incomplete", state)
+                            "documents_incomplete", new_state,
+                            {"documents_status": new_state["documents_status"],
+                             "missing_fields": new_state["missing_fields"]})
             ],
         }
     else:
-        return {
+        new_state = {
             **state,
             "missing_fields": [],
             "documents_status": "verified",
             "booking_status": "documents_checked",
+        }
+        return {
+            **new_state,
             "audit_log": [
                 audit_entry("agent_document_verification",
-                            "documents_checked", state)
+                            "documents_checked", new_state,
+                            {"documents_status": new_state["documents_status"],
+                             "missing_fields": new_state["missing_fields"]})
             ],
         }

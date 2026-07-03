@@ -24,10 +24,20 @@ def run(state: BookingState) -> BookingState:
         "booking_status": "request_parsed",
     }
 
+    new_state = {**state, **mock_user_request_parsed_fields}
+    details = {
+        "destination": new_state["destination"],
+        "check_in": new_state["check_in"],
+        "check_out": new_state["check_out"],
+        "adults": new_state["adults"],
+        "budget_per_night": new_state["budget_per_night"],
+        "preferences": new_state["preferences"],
+    }
+
     return {
         **mock_user_request_parsed_fields,
         "audit_log": [
             audit_entry("agent_parse_user_request",
-                        "user_request_parsed", state)
+                        "user_request_parsed", new_state, details)
         ],
     }

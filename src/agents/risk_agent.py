@@ -29,4 +29,6 @@ def run(state: BookingState, config: RunnableConfig) -> BookingState:
     new_state = {**state, "risk_score": risk_score,
                  "requires_human_approval": requires_human_approval,
                  "booking_status": "risk_scored"}
-    return {**new_state, "audit_log": [audit_entry("agent_risk", "risk_scored", new_state)]}
+    return {**new_state, "audit_log": [audit_entry(
+        "agent_risk", "risk_scored", new_state,
+        {"requires_human_approval": requires_human_approval})]}

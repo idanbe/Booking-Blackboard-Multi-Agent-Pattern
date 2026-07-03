@@ -2,6 +2,8 @@ import json
 import uuid
 from pathlib import Path
 
+from langgraph.types import Command
+
 from state import initial_state, shared_parameters
 from controller import create_graph
 
@@ -25,6 +27,11 @@ def main():
     }
     app = create_graph()
     result = app.invoke(state, config=config)
+
+    if "__interrupt__" in result:
+        print(f"[HUMAN GATE] {result['__interrupt__'][0].value}")
+        decision = input("Approve booking? (approve/reject): ").strip()
+        result = app.invoke(Command(resume=decision), config=config)
 
     write_result_to_file(result)
 

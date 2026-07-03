@@ -36,4 +36,6 @@ def run(state: BookingState) -> BookingState:
         "booking_status": "technical_issues_found" if issues else "code_reviewed",
     }
 
-    return {**new_state, "audit_log": [audit_entry("agent_code_review", "code_reviewed", new_state)]}
+    return {**new_state, "audit_log": [audit_entry(
+        "agent_code_review", "code_reviewed", new_state,
+        {"technical_issues": issues})]}

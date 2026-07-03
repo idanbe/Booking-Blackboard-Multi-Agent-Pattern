@@ -26,12 +26,17 @@ def run(state: BookingState, config: RunnableConfig) -> BookingState:
                      or shared_parameters["free_cancellation"] is None)):
             filtered_hotels.append(hotel)
 
-    return {
+    new_state = {
         **state,
         "candidate_hotels": filtered_hotels,
         "booking_status": "hotels_found",
         "confidence_score": (0.82 if filtered_hotels else 0.45),
+    }
+
+    return {
+        **new_state,
         "audit_log": [
-            audit_entry("agent_booking", "hotels_found", state)
+            audit_entry("agent_booking", "hotels_found", new_state,
+                        {"candidate_hotels": filtered_hotels})
         ],
     }
