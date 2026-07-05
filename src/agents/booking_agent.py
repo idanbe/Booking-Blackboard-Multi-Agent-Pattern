@@ -23,7 +23,7 @@ def run(state: BookingState, config: RunnableConfig) -> BookingState:
     for hotel in MOCK_HOTELS:
         if (hotel["price_per_night"] <= state["budget_per_night"]
                 and (hotel["free_cancellation"] == shared_parameters["free_cancellation_required"]
-                     or shared_parameters["free_cancellation"] is None)):
+                     or shared_parameters["free_cancellation_required"] is None)):
             filtered_hotels.append(hotel)
 
     new_state = {

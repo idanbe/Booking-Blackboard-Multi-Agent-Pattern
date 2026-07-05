@@ -88,7 +88,7 @@ def initial_state(user_request: str) -> BookingState:
         "iterations": 0,
         "full_name": "idan",
         "email": "idan@example.com",
-        "phone_number": "1234567890",
+        "phone_number": None,
     }
 
     return initial_booking_state
