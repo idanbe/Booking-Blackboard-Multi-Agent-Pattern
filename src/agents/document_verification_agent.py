@@ -25,7 +25,7 @@ def run(state: BookingState) -> BookingState:
             **state,
             "missing_fields": missing_fields,
             "documents_status": "missing_fields",
-            "booking_status": "documents_incomplete",
+            "booking_status": "documents_checked",
         }
         return {
             **new_state,
