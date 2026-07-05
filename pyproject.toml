@@ -1,7 +1,7 @@
 [project]
 name = "booking-lab"
 version = "0.1.0"
-description = "Booking multi-agent lab demonstrating the Blackboard architecture pattern"
+description = "Booking – Blackboard Multi-Agent Pattern: a booking system built on the Blackboard architecture pattern"
 readme = "README.md"
 authors = [
     { name = "Idan Beck", email = "idanbeck88@gmail.com" }

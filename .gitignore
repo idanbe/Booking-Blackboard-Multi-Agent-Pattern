@@ -13,4 +13,4 @@ wheels/
 src/outputs/run_output.json
 
 # Editor
-.vscode/
+.vscode
